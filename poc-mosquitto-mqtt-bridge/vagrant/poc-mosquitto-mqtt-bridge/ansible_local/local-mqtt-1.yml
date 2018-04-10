@@ -1,0 +1,9 @@
+---
+- hosts: all
+  become: yes
+  
+  roles:
+  - role: mosquitto
+    vars:
+      mosquitto_bridge_connection: local-mqtt-1
+      mosquitto_bridge_address: 192.168.70.11:1883

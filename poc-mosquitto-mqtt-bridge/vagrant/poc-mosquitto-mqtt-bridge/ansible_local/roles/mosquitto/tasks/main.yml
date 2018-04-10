@@ -1,0 +1,26 @@
+---  
+- apt_repository:
+    repo: ppa:mosquitto-dev/mosquitto-ppa
+    
+- name: make sure mosquitto are installed
+  apt: 
+    name: mosquitto 
+    update_cache: yes
+    state: latest
+
+- name: copy bridge configuration
+  template: 
+    src: bridge.conf.j2
+    dest: "/etc/mosquitto/conf.d/bridge.conf"
+    mode: 0644
+  when: not((mosquitto_bridge_connection is undefined) or (mosquitto_bridge_connection is none) or (mosquitto_bridge_connection | trim == '')) and not((mosquitto_bridge_address is undefined) or (mosquitto_bridge_address is none) or (mosquitto_bridge_address | trim == '')) 
+
+- name: make sure mosquitto is enabled
+  service:
+    name: mosquitto
+    enabled: yes
+    
+- name: make sure mosquitto is up and running
+  service:
+    name: mosquitto
+    state: started
