@@ -1,0 +1,9 @@
+---
+- hosts: all
+  become: yes
+  
+  roles:
+  - role: mosquitto
+    vars:
+      mosquitto_bridge_connection: 3-tier-mqtt-2
+      mosquitto_bridge_address: 192.168.80.21:1883

@@ -56,5 +56,6 @@
 	</build>
 	<modules>
 		<module>poc-mosquitto-mqtt-bridge</module>
+		<module>poc-mosquitto-mqtt-bridge-3-tier</module>
 	</modules>
 </project>
