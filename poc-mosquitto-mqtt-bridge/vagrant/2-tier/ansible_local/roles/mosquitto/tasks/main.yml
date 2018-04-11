@@ -23,4 +23,4 @@
 - name: make sure mosquitto is up and running
   service:
     name: mosquitto
-    state: started
+    state: restarted
